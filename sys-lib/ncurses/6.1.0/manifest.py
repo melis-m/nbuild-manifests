@@ -18,7 +18,6 @@ NCURSES_VERSION = '6.1'
     '''),
 )
 def build_ncurses():
-    nbuild
     package = nbuild.current_build().current_package
     nbuild.build_autotools_package(
         configure=lambda: nbuild.do_configure(
