@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.6
 # -*- coding: utf-8 -*-
 """
-Build manifest for the Ncurses library and it's headers
+Build manifest for the Ncurses library and its headers
 """
 
 from textwrap import dedent
