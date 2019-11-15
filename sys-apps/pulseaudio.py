@@ -31,6 +31,7 @@ from stdlib.split.drain_all import drain_all
         'sys-libs/libtool-dev',
         'sys-libs/libsndfile-dev',
         'sys-libs/libspeexdsp-dev',
+        'sys-libs/openssl-dev',
         'dev-libs/json-c-dev',
         'dev-apps/gettext',
         'sys-apps/dbus-dev',
@@ -41,7 +42,6 @@ def build(build):
     packages = autotools.build(
             configure=lambda: configure(
                 '--without-caps',
-                '--disable-openssl',
                 '--disable-manpages',
             ),
     )
