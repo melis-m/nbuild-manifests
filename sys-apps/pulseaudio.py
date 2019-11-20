@@ -1,9 +1,24 @@
 import stdlib
 import stdlib.build
+import stdlib.split.system
 from stdlib.template import autotools
 from stdlib.template.configure import configure
 from stdlib.manifest import manifest
-from stdlib.split.drain_all import drain_all
+
+
+def split():
+    pkgs = stdlib.split.system.system()
+    main, dev, _ = pkgs.values()
+    main.drain_package(
+        dev,
+        'usr/lib64/pulseaudio/libpulsecommon-13.0.so',
+        'usr/lib64/pulseaudio/libpulsecore-13.0.so',
+        'usr/lib64/pulse-13.0/modules/libprotocol-http.so',
+        'usr/lib64/pulse-13.0/modules/libprotocol-cli.so',
+        'usr/lib64/pulse-13.0/modules/libprotocol-esound.so',
+        'usr/lib64/pulse-13.0/modules/libcli.so',
+    )
+    return pkgs
 
 
 @manifest(
@@ -44,6 +59,6 @@ def build(build):
                 '--without-caps',
                 '--disable-manpages',
             ),
+            split=split,
     )
     return packages
-
