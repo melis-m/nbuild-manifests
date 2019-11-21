@@ -17,6 +17,7 @@ def split():
         'usr/lib64/pulse-13.0/modules/libprotocol-cli.so',
         'usr/lib64/pulse-13.0/modules/libprotocol-esound.so',
         'usr/lib64/pulse-13.0/modules/libcli.so',
+        '**/*.so'
     )
     return pkgs
 
@@ -48,6 +49,7 @@ def split():
         'sys-libs/libspeexdsp-dev',
         'sys-libs/openssl-dev',
         'dev-libs/json-c-dev',
+        'sys-libs/libcap-dev',
         'dev-apps/gettext',
         'sys-apps/dbus-dev',
         'sys-apps/systemd-dev',
@@ -56,7 +58,6 @@ def split():
 def build(build):
     packages = autotools.build(
             configure=lambda: configure(
-                '--without-caps',
                 '--disable-manpages',
             ),
             split=split,
